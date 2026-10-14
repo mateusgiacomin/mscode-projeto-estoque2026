@@ -3,12 +3,12 @@
 namespace App\Controller\Login;
 
 use App\Controller\AbstractController;
-use App\Model\usuario\UsuarioModel;
-
+use App\Model\Usuario\UsuarioModel;
 
 class LoginController extends AbstractController
 {
     private UsuarioModel $usuarioModel;
+
     public function __construct()
     {
         $this->usuarioModel = new UsuarioModel();
@@ -25,10 +25,10 @@ class LoginController extends AbstractController
 
             $_SESSION['usuario'] = $usuario;
 
-            $this->render('<dashboard/dashboard.php');
+            $this->render('Dashboard/dashboard.php');
 
         }catch(\Exception $e){
-            $this->redirectToError('error', $e->getMessage());
+            $this->redirectToError($e->getMessage());
         }
     }
 

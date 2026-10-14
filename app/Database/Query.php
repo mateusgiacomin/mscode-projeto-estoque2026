@@ -11,7 +11,7 @@ class Query
         $database = new Database(
             host: '127.0.0.1',
             database: 'mscode_estoque',
-            username: 'heitor',
+            username: 'mateus',
             password: '1234',
             port: 3306,
         );

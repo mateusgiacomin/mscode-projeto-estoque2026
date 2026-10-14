@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace App\Model\usuario;
+namespace App\Model\Usuario;
 
 use App\Database\Query;
 
@@ -10,29 +10,26 @@ class UsuarioModel
 
     public function __construct()
     {
-       $this->query = new Query();
+        $this->query = new Query();
     }
-    
+
     public function validarUsuario(string $email, string $password): Usuario
     {
         $condicao = " email = '{$email}'";
 
-        $colunas = "senha";
+        $resultado = $this->query->select('usuario', $condicao);
 
-        $resultado = $this->query->select('usuario', $condicao, $colunas);
-
-        if (!$resultado){
+        if (!$resultado) {
             throw new \Exception('Email invalido!');
         }
 
-        if (!password_verify($password, $resultado[0]['senha'])){
+        if (!password_verify($password, $resultado[0]['senha'])) {
             throw new \Exception('senha invalida');
         }
 
-        return new usuario($resultado[0]['id'], $resultado[0]['nome']);
-
-        return usuario;
+        return new Usuario(
+            (int) $resultado[0]['id'],
+            $resultado[0]['nome']
+        );
     }
 }
-
-?>
