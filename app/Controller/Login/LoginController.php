@@ -25,7 +25,7 @@ class LoginController extends AbstractController
 
             $_SESSION['usuario'] = $usuario;
 
-            $this->render('Dashboard/dashboard.php');
+            $this->redirect('/home.php');
 
         }catch(\Exception $e){
             $this->redirectToError($e->getMessage());
