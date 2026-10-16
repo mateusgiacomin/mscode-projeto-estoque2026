@@ -20,6 +20,7 @@ class CadastrarCategoriaController extends AbstractController
                 throw new \Exception('Informe o nome da categoria!');
             }
             $this->model->cadastrar($requestData['nome']);
+            $this->redirect('/categorias');
         } catch(\Exception $e) {
             $this->redirectToError($e->getMessage());
         }
