@@ -38,25 +38,22 @@ class CategoriaModel
     }
 
     public function buscar(int $id): array
-{
-    $resultado = $this->query->select('categoria', "id = {$id}");
+    {
+        $resultado = $this->query->select('categoria', "id = {$id}");
 
-    if (!$resultado) {
-        throw new \Exception('Categoria não encontrada');
+        if (!$resultado) {
+            throw new \Exception('Categoria não encontrada');
+        }
+
+        return $resultado[0];
     }
 
-    return $resultado[0];
-}
+    public function atualizar(int $id, string $nome): void
+    {
+        $resultado = $this->query->update('categoria', ['nome' => $nome], "id = {$id}");
 
-public function atualizar(int $id, string $nome): void
-{
-    $dados = [
-        'nome' => $nome,
-    ];
-
-    $resultado = $this->query->update('categoria', $dados, "id = {$id}");
-
-    if (!$resultado) {
-        throw new \Exception('Erro ao atualizar categoria: ' . $nome);
+        if (!$resultado) {
+            throw new \Exception('Erro ao atualizar categoria: ' . $nome);
+        }
     }
 }

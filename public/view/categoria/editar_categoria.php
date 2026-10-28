@@ -53,12 +53,15 @@
         <h1>Editar categoria</h1>
       </div>
 
+      <?php
+      $categoria = $data['categoria'] ?? ['id' => '', 'nome' => ''];
+      ?>
       <form action="/atualizar_categoria" method="POST">
-        <input type="hidden" name="id" value="<?= $data['categoria']['id'] ?>">
+        <input type="hidden" name="id" value="<?= htmlspecialchars((string)($categoria['id'] ?? '')) ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
           <input type="text" class="form-control" id="nome" name="nome"
-            value="<?= htmlspecialchars($data['categoria']['nome']) ?>">
+            value="<?= htmlspecialchars((string)($categoria['nome'] ?? '')) ?>">
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>

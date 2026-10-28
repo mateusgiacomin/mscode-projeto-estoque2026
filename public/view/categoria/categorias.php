@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($data['categorias'] as $categoria) { ?>
+          <?php foreach (($data['categorias'] ?? []) as $categoria) { ?>
             <tr>
               <th scope="row"><?= $categoria['id'] ?></th>
               <td><?= htmlspecialchars($categoria['nome']) ?></td>
