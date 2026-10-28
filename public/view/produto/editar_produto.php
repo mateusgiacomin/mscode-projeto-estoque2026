@@ -14,7 +14,10 @@
 
 <body>
   <main>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . '/view/includes/header.php'; ?>
+    <?php
+    $produto = $data['produto'] ?? [];
+    require $_SERVER['DOCUMENT_ROOT'] . '/view/includes/header.php';
+    ?>
 
     <div class="container py-5">
       <div class="mb-4">
@@ -23,27 +26,27 @@
 
       <div class="w-75 mt-2">
         <form action="/atualizar_produto" method="POST">
-          <input type="hidden" name="id" value="<?= $data['produto']['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars((string) ($produto['id'] ?? '')) ?>">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome"
-              value="<?= htmlspecialchars($data['produto']['nome']) ?>">
+              value="<?= htmlspecialchars((string) ($produto['nome'] ?? '')) ?>">
           </div>
           <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
             <textarea class="form-control" id="descricao" name="descricao"
-              rows="4"><?= htmlspecialchars($data['produto']['descricao'] ?? '') ?></textarea>
+              rows="4"><?= htmlspecialchars((string) ($produto['descricao'] ?? '')) ?></textarea>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="categoria_id" class="form-label">Categoria Id</label>
               <input type="number" class="form-control" id="categoria_id" name="categoria_id" min="1"
-                value="<?= $data['produto']['categoria_id'] ?>">
+                value="<?= htmlspecialchars((string) ($produto['categoria_id'] ?? '')) ?>">
             </div>
             <div class="col">
               <label for="valor" class="form-label">Valor</label>
               <input type="number" class="form-control" id="valor" name="valor" min="0" step="0.01"
-                value="<?= $data['produto']['valor'] ?>">
+                value="<?= htmlspecialchars((string) ($produto['valor'] ?? '')) ?>">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Salvar</button>
