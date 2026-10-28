@@ -1,11 +1,11 @@
-<?php 
+<?php
+
 namespace App\Controller\Categoria;
 
 use App\Controller\AbstractController;
 use App\Model\Categoria\CategoriaModel;
 
-
-class CadastrarCategoriaController extends AbstractController
+class EditarCategoriaController extends AbstractController
 {
     private CategoriaModel $model;
 
@@ -13,17 +13,17 @@ class CadastrarCategoriaController extends AbstractController
     {
         $this->model = new CategoriaModel();
     }
+
     public function index(array $requestData): void
     {
         try {
-            if(!$requestData['nome']) {
-                throw new \Exception('Informe o nome da categoria!');
-            }
-            $this->model->cadastrar($requestData['nome']);
-            $this->redirect('/categorias');
-        } catch(\Exception $e) {
+            $categoria = $this->model->buscar((int) ($requestData['id'] ?? 0));
+
+            $this->render('categoria/editar_categoria.php', [
+                'categoria' => $categoria,
+            ]);
+        } catch (\Exception $e) {
             $this->redirectToError($e->getMessage());
         }
-    } 
+    }
 }
-?>
