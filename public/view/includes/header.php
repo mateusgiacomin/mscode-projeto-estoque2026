@@ -1,13 +1,13 @@
 <div class="border-bottom mb-2">
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center align-items-center py-3">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <img class="me-2" src="/assets/images/logotipo.svg" width="53">
         <span class="fs-4">MS Code - Estoque</span>
       </a>
 
       <ul class="nav nav-pills d-flex align-items-center">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Início</a></li>
+        <li class="nav-item"><a href="/home" class="nav-link active" aria-current="page">Início</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">

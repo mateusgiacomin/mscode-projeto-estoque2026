@@ -41,7 +41,13 @@
                 <a href="/editar_categoria?id=<?= $categoria['id'] ?>" class="btn btn-secondary btn-sm" title="Editar">
                   <i class="bi bi-pencil"></i>
                 </a>
-                <button class="btn btn-danger btn-sm" title="Excluir"><i class="bi bi-trash"></i></button>
+                <form action="/excluir_categoria" method="POST" class="d-inline"
+                  onsubmit="return confirm('Excluir esta categoria?');">
+                  <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
+                  <button type="submit" class="btn btn-danger btn-sm" title="Excluir">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
               </td>
             </tr>
           <?php } ?>

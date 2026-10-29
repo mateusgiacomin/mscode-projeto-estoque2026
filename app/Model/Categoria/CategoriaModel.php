@@ -56,4 +56,12 @@ class CategoriaModel
             throw new \Exception('Erro ao atualizar categoria: ' . $nome);
         }
     }
+        public function excluir(int $id): void
+    {
+        $resultado = $this->query->delete('categoria', "id = {$id}");
+
+        if (!$resultado) {
+            throw new \Exception('Erro ao excluir categoria');
+        }
+    }
 }
