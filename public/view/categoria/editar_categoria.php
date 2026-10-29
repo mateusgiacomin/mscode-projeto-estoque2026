@@ -23,11 +23,11 @@
 
       <div class="w-50 mt-2">
         <form action="/atualizar_categoria" method="POST">
-          <input type="hidden" name="id" value="<?= $data['categoria']['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars((string) ($data['categoria']['id'] ?? '')) ?>">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome"
-              value="<?= htmlspecialchars($data['categoria']['nome']) ?>">
+              value="<?= htmlspecialchars($data['categoria']['nome'] ?? '') ?>">
           </div>
           <button type="submit" class="btn btn-primary">Salvar</button>
           <a href="/categorias" class="btn btn-outline-secondary">Cancelar</a>
